@@ -68,7 +68,7 @@ const MOCK_EVENT_PACKAGES = [
       "Unlimited High-Speed Wi-Fi",
       "Premium Janitorial Staff Site-wide"
     ],
-    image_url: "https://images.unsplash.com/photo-1505232458627-a7238a94ee57?auto=format&fit=crop&q=80&w=1200",
+    image_url: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=1200",
     display_order: 3,
     is_active: true
   }
@@ -188,7 +188,7 @@ const MOCK_LAUNDRY_SERVICES = [
     description: "Ideal for everyday apparel: t-shirts, jeans, shorts, underwear, and gym wears. Clothes are color-sorted, washed with premium detergents, tumble-dried, and neatly folded.",
     turnaround_time: "24 Hours",
     price_from: 2500,
-    image_url: "https://images.unsplash.com/photo-1545173168-9f1947eebd01?auto=format&fit=crop&q=80&w=800",
+    image_url: "https://images.unsplash.com/photo-1582735689369-4fe89db7114c?auto=format&fit=crop&q=80&w=800",
     display_order: 1,
     is_active: true
   },
@@ -210,7 +210,7 @@ const MOCK_LAUNDRY_SERVICES = [
     description: "In a hurry for a meeting or flight? Drop off your garments before 10 AM, and pick them up freshly washed, steamed, ironed, and on hangers in less than 6 hours.",
     turnaround_time: "6 Hours",
     price_from: 7500,
-    image_url: "https://images.unsplash.com/photo-1521566624971-fc719398548c?auto=format&fit=crop&q=80&w=800",
+    image_url: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&q=80&w=800",
     display_order: 3,
     is_active: true
   },
@@ -221,7 +221,7 @@ const MOCK_LAUNDRY_SERVICES = [
     description: "Comprehensive linen and laundry solutions for local boutique hotels, shortlet operators, fine dining restaurants, spas, and gyms. Weekly scheduled pickup and delivery included.",
     turnaround_time: "Flexible Scheduling",
     price_from: 25000,
-    image_url: "https://images.unsplash.com/photo-1542156822-6924d1a71aba?auto=format&fit=crop&q=80&w=800",
+    image_url: "https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?auto=format&fit=crop&q=80&w=800",
     display_order: 4,
     is_active: true
   }
@@ -325,7 +325,7 @@ const MOCK_GALLERY_IMAGES = [
   {
     id: "gal-4",
     business_unit_id: "bu3",
-    image_url: "https://images.unsplash.com/photo-1545173168-9f1947eebd01?auto=format&fit=crop&q=80&w=800",
+    image_url: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&q=80&w=800",
     caption: "Garments packaged and prepped for home delivery",
     display_order: 4
   }

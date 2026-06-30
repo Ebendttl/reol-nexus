@@ -210,7 +210,7 @@ export default async function MarketingHomePage() {
                 <div className="relative h-64 overflow-hidden">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src="https://images.unsplash.com/photo-1545173168-9f1947eebd01?auto=format&fit=crop&q=80&w=800"
+                    src="https://images.unsplash.com/photo-1582735689369-4fe89db7114c?auto=format&fit=crop&q=80&w=800"
                     alt="REOL Laundry"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
