@@ -1,5 +1,5 @@
 {
-  "name": "tmp-turbo",
+  "name": "reol-nexus",
   "private": true,
   "scripts": {
     "build": "turbo run build",
