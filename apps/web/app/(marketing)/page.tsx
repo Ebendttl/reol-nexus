@@ -399,7 +399,7 @@ export default async function MarketingHomePage() {
                         {unit.expected_launch_label}
                       </span>
                       <Link
-                        href="/contact?notify=true"
+                        href="/coming-soon"
                         className="text-xs font-semibold text-[#5C6E62] dark:text-[#90A496] hover:text-[#0F5132] dark:hover:text-[#38C186] flex items-center gap-1 group-hover:translate-x-1 transition-transform"
                       >
                         <span>Notify Me</span>
