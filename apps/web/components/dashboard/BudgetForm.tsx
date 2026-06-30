@@ -44,14 +44,20 @@ export default function BudgetForm({ businessUnits, categories }: BudgetFormProp
 
   const updateLineItemCategory = (index: number, categoryId: string) => {
     const updated = [...lineItems];
-    updated[index].category_id = categoryId;
-    setLineItems(updated);
+    const item = updated[index];
+    if (item) {
+      item.category_id = categoryId;
+      setLineItems(updated);
+    }
   };
 
   const updateLineItemAmount = (index: number, amount: number) => {
     const updated = [...lineItems];
-    updated[index].allocated_amount = amount;
-    setLineItems(updated);
+    const item = updated[index];
+    if (item) {
+      item.allocated_amount = amount;
+      setLineItems(updated);
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
