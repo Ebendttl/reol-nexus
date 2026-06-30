@@ -6,7 +6,7 @@ import {
   PlusCircle, 
   Wallet, 
   FileText, 
-  Settings, 
+  Inbox,
   LogOut, 
   Building2 
 } from "lucide-react";
