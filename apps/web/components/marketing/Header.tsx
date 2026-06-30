@@ -74,12 +74,6 @@ export default function Header() {
           {/* Desktop Actions */}
           <div className="hidden md:flex items-center gap-4">
             <Link
-              href="/login"
-              className="text-xs font-bold text-[#5C6E62] dark:text-[#90A496] hover:text-[#0F5132] dark:hover:text-[#38C186] transition-colors"
-            >
-              Sign In
-            </Link>
-            <Link
               href="/contact"
               className="inline-flex items-center gap-2 bg-[#0F5132] hover:bg-[#0D442A] text-white px-4 py-2 rounded-lg text-xs font-bold shadow-md shadow-[#0F5132]/10 transition-all duration-300 hover:-translate-y-0.5"
             >
@@ -123,20 +117,13 @@ export default function Header() {
               );
             })}
             <div className="h-px bg-[#E2EAE4] dark:bg-[#1E2720] my-4" />
-            <div className="grid grid-cols-2 gap-4 px-4">
-              <Link
-                href="/login"
-                onClick={() => setIsOpen(false)}
-                className="flex items-center justify-center py-3 rounded-xl border border-[#E2EAE4] dark:border-[#1E2720] text-sm font-bold text-[#17221A] dark:text-[#E2EAE4] hover:bg-[#F4F7F5] dark:hover:bg-[#1E2720] transition-all"
-              >
-                Sign In
-              </Link>
+            <div className="px-4">
               <Link
                 href="/contact"
                 onClick={() => setIsOpen(false)}
-                className="flex items-center justify-center gap-2 py-3 rounded-xl bg-[#0F5132] text-sm font-bold text-white shadow-md shadow-[#0F5132]/10 transition-all hover:bg-[#0D442A]"
+                className="flex items-center justify-center gap-2 py-3 rounded-xl bg-[#0F5132] text-sm font-bold text-white shadow-md shadow-[#0F5132]/10 transition-all hover:bg-[#0D442A] w-full"
               >
-                <span>Enquire</span>
+                <span>Enquire Now</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
