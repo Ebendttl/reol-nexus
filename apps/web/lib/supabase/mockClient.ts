@@ -331,6 +331,81 @@ const MOCK_GALLERY_IMAGES = [
   }
 ];
 
+let MOCK_PUBLIC_ENQUIRIES = [
+  {
+    id: "enq-1",
+    type: "event_enquiry",
+    full_name: "Adeboye Benson",
+    phone: "+234 803 111 2222",
+    email: "a.benson@bensongroup.ng",
+    message: "Interested in booking the Grand Banquet Hall for our annual AGM and staff gala. Need information on custom AV installation support.",
+    metadata: {
+      package_id: "pack-gold",
+      package_name: "Gold Royale Package",
+      guest_count: 350,
+      event_date: "2026-07-15"
+    },
+    status: "new",
+    created_at: new Date(Date.now() - 3600000 * 2).toISOString() // 2 hours ago
+  },
+  {
+    id: "enq-2",
+    type: "eatery_order",
+    full_name: "Chioma Nze",
+    phone: "+234 812 345 6789",
+    email: "chioma.nze@yahoo.com",
+    message: "Please deliver hot. Contact me on phone when rider arrives at the estate gate.",
+    metadata: {
+      order_items: "2x Firewood Jollof Rice (Special), 1x Royal Grilled Platter, 3x Zobo Cooler",
+      delivery_address: "Apartment 4B, Silver Oak Estate, Lekki Phase 1",
+      delivery_slot: "12:30 PM - 1:00 PM"
+    },
+    status: "new",
+    created_at: new Date(Date.now() - 3600000 * 5).toISOString() // 5 hours ago
+  },
+  {
+    id: "enq-3",
+    type: "laundry_pickup",
+    full_name: "Olumide Alao",
+    phone: "+234 809 999 8888",
+    email: "o.alao@alawyers.com",
+    message: "Starch should be medium on the native wears. Need them back before Friday morning.",
+    metadata: {
+      pickup_address: "Plot 15, Admiralty Way, Lekki Phase 1",
+      pickup_date: "2026-07-01",
+      service_id: "serv-native",
+      service_name: "Royal Native Wear Care"
+    },
+    status: "contacted",
+    created_at: new Date(Date.now() - 3600000 * 24).toISOString() // 1 day ago
+  },
+  {
+    id: "enq-4",
+    type: "notify_me",
+    full_name: "Tunde Folawiyo",
+    phone: null,
+    email: "t.folawiyo@tundemotors.com",
+    message: "Interested in the Auto Spa wash packages launch notifications.",
+    metadata: {
+      unit_id: "soon-2",
+      unit_name: "REOL Auto Spa & Wash"
+    },
+    status: "qualified",
+    created_at: new Date(Date.now() - 3600000 * 48).toISOString() // 2 days ago
+  },
+  {
+    id: "enq-5",
+    type: "contact",
+    full_name: "Bolanle Cole",
+    phone: "+234 802 222 3333",
+    email: "bolanle@coleevents.com",
+    message: "Hi, I am an event planner. I wanted to ask if you have special corporate partnership discounts if I bring multiple wedding clients to your Event Center this year. Let me know your terms.",
+    metadata: {},
+    status: "new",
+    created_at: new Date(Date.now() - 3600000 * 72).toISOString() // 3 days ago
+  }
+];
+
 function createMockQueryBuilder(table: string, cookieStoreOrRequest: any, isMiddleware = false) {
   const getCookie = (name: string) => {
     if (isMiddleware) {
@@ -345,6 +420,10 @@ function createMockQueryBuilder(table: string, cookieStoreOrRequest: any, isMidd
 
   let isSingle = false;
   let isInsert = false;
+  let isUpdate = false;
+  let updatePayload: any = null;
+  let eqField: string = "";
+  let eqValue: any = null;
 
   let mockData: any = [];
   if (table === "profiles") {
@@ -378,6 +457,8 @@ function createMockQueryBuilder(table: string, cookieStoreOrRequest: any, isMidd
     mockData = MOCK_COMING_SOON_UNITS;
   } else if (table === "gallery_images") {
     mockData = MOCK_GALLERY_IMAGES;
+  } else if (table === "public_enquiries") {
+    mockData = MOCK_PUBLIC_ENQUIRIES;
   } else {
     mockData = [];
   }
@@ -387,6 +468,8 @@ function createMockQueryBuilder(table: string, cookieStoreOrRequest: any, isMidd
       return builder;
     },
     eq(field: string, value: any) {
+      eqField = field;
+      eqValue = value;
       // Filter mockData if it's an array and matching a simple filter
       if (Array.isArray(mockData)) {
         mockData = mockData.filter((item: any) => {
@@ -416,11 +499,30 @@ function createMockQueryBuilder(table: string, cookieStoreOrRequest: any, isMidd
     },
     insert(data: any) {
       isInsert = true;
+      if (table === "public_enquiries") {
+        const newEnq = {
+          id: "enq-" + Math.random().toString(36).substr(2, 9),
+          created_at: new Date().toISOString(),
+          status: "new",
+          ...data
+        };
+        MOCK_PUBLIC_ENQUIRIES.unshift(newEnq);
+      }
+      return builder;
+    },
+    update(data: any) {
+      isUpdate = true;
+      updatePayload = data;
       return builder;
     },
     then(resolve: any) {
       let resolvedData = mockData;
-      if (isInsert) {
+      if (isUpdate && eqField === "id" && table === "public_enquiries") {
+        MOCK_PUBLIC_ENQUIRIES = MOCK_PUBLIC_ENQUIRIES.map((item) =>
+          item.id === eqValue ? { ...item, ...updatePayload } : item
+        );
+        resolvedData = MOCK_PUBLIC_ENQUIRIES.find(item => item.id === eqValue) || null;
+      } else if (isInsert) {
         resolvedData = { id: "mock-inserted-id" };
       }
       
