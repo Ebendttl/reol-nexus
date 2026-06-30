@@ -84,7 +84,7 @@ export default async function EateryPage() {
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    {items.map((item) => (
+                    {items.map((item: any) => (
                       <div 
                         key={item.id} 
                         className="group flex flex-col sm:flex-row gap-6 p-4 rounded-2xl bg-[#F4F7F5] dark:bg-[#171D18] border border-[#E2EAE4] dark:border-[#1E2720] shadow-sm hover:shadow transition-shadow"

@@ -23,7 +23,7 @@ export default async function LaundryPage() {
     .select("*")
     .eq("is_active", true);
 
-  const formServices = (services || []).map(s => ({
+  const formServices = (services || []).map((s: any) => ({
     id: s.id,
     name: s.name,
   }));
@@ -69,7 +69,7 @@ export default async function LaundryPage() {
       {deals && deals.length > 0 && (
         <section className="bg-[#33B5E5] text-[#111612] py-4 px-4 overflow-hidden border-b border-[#33B5E5]/10">
           <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-center gap-6 text-center md:text-left">
-            {deals.map((deal) => (
+            {deals.map((deal: any) => (
               <div key={deal.id} className="flex items-center gap-2 bg-[#111612]/5 dark:bg-white/10 px-4 py-1.5 rounded-full border border-black/10">
                 <Tag className="w-4 h-4 text-white shrink-0 fill-white" />
                 <span className="text-xs font-black tracking-wider uppercase">{deal.discount_label}</span>
@@ -97,7 +97,7 @@ export default async function LaundryPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {services && services.map((service) => (
+            {services && services.map((service: any) => (
               <div 
                 key={service.id} 
                 className="group flex flex-col sm:flex-row gap-6 p-6 rounded-3xl bg-[#F4F7F5] dark:bg-[#171D18] border border-[#E2EAE4] dark:border-[#1E2720] shadow-sm hover:shadow transition-shadow"

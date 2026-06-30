@@ -57,7 +57,7 @@ export default async function ComingSoonPage() {
             </div>
 
             <div className="space-y-8 relative before:absolute before:inset-0 before:left-6 before:w-0.5 before:bg-[#E2EAE4] dark:before:bg-[#1E2720]">
-              {units && units.map((unit) => {
+              {units && units.map((unit: any) => {
                 const IconComponent = iconsMap[unit.icon] || Building;
                 return (
                   <div key={unit.id} className="relative pl-14 group">
