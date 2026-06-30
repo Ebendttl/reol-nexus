@@ -82,7 +82,7 @@ export default function TrendChart({ data }: TrendChartProps) {
               borderRadius: "8px",
               boxShadow: "0 4px 12px rgba(0,0,0,0.05)",
             }}
-            formatter={(value: any, name: string) => [
+            formatter={(value: any, name: any) => [
               formatCurrency(Number(value)),
               name === "net" ? "Net Revenue" : name === "income" ? "Total Income" : "Total Expense",
             ]}
