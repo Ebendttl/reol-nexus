@@ -434,10 +434,10 @@ export default async function MarketingHomePage() {
               <ArrowRight className="w-4 h-4" />
             </Link>
             <a
-              href="tel:+2348123456789"
+              href="tel:+2348137310107"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/15 border border-white/20 px-8 py-4 rounded-xl font-bold transition-all"
             >
-              <span>Call Us: +234 812 345 6789</span>
+              <span>Call Us: +234 813 731 0107</span>
             </a>
           </div>
         </div>

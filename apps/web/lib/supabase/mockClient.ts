@@ -352,7 +352,7 @@ let MOCK_PUBLIC_ENQUIRIES = [
     id: "enq-2",
     type: "eatery_order",
     full_name: "Chioma Nze",
-    phone: "+234 812 345 6789",
+    phone: "+234 813 731 0107",
     email: "chioma.nze@yahoo.com",
     message: "Please deliver hot. Contact me on phone when rider arrives at the estate gate.",
     metadata: {

@@ -283,7 +283,7 @@ export default async function EventCenterPage() {
               <div className="space-y-1">
                 <h5 className="font-bold text-sm text-[#0F5132] dark:text-[#38C186]">Have questions about booking?</h5>
                 <p className="text-xs text-[#5C6E62] dark:text-[#90A496] leading-relaxed">
-                  Call our event concierge directly at <a href="tel:+2348123456789" className="font-semibold underline">+234 812 345 6789</a> or message us on WhatsApp for rapid date confirmations.
+                  Call our event concierge directly at <a href="tel:+2348137310107" className="font-semibold underline">+234 813 731 0107</a> or message us on WhatsApp for rapid date confirmations.
                 </p>
               </div>
             </div>

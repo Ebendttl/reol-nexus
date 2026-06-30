@@ -205,7 +205,7 @@ export default async function LaundryPage() {
               <div className="space-y-1">
                 <h5 className="font-bold text-sm text-[#33B5E5]">Need urgent express same-day pickup?</h5>
                 <p className="text-xs text-[#5C6E62] dark:text-[#90A496] leading-relaxed">
-                  Call our dry cleaning desk at <a href="tel:+2348123456789" className="font-semibold underline">+234 812 345 6789</a> or drop off directly at the plaza drive-thru window for instant express servicing.
+                  Call our dry cleaning desk at <a href="tel:+2348137310107" className="font-semibold underline">+234 813 731 0107</a> or drop off directly at the plaza drive-thru window for instant express servicing.
                 </p>
               </div>
             </div>

@@ -180,7 +180,7 @@ export default async function EateryPage() {
               <div className="space-y-1">
                 <h5 className="font-bold text-sm text-[#FF5733]">Want to reserve a table or order direct?</h5>
                 <p className="text-xs text-[#5C6E62] dark:text-[#90A496] leading-relaxed">
-                  Call our dining room hosts at <a href="tel:+2348123456789" className="font-semibold underline">+234 812 345 6789</a> for instant bookings, or connect directly through the WhatsApp button.
+                  Call our dining room hosts at <a href="tel:+2348137310107" className="font-semibold underline">+234 813 731 0107</a> for instant bookings, or connect directly through the WhatsApp button.
                 </p>
               </div>
             </div>

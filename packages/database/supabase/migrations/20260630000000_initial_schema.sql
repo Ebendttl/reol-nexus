@@ -430,7 +430,7 @@ BEGIN
   DELETE FROM public.transactions WHERE source_ref_id = OLD.id;
   RETURN OLD;
 END;
-$$ LANGUAGE sql SECURITY DEFINER SET search_path = public;
+$$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = public;
 
 CREATE OR REPLACE TRIGGER trg_delete_booking_from_ledger
 AFTER DELETE ON public.event_bookings

@@ -4,7 +4,7 @@ import { MessageSquare } from "lucide-react";
 
 export default function WhatsAppButton() {
   // Lagos WhatsApp Contact number (example formatting)
-  const whatsappNumber = "2348123456789";
+  const whatsappNumber = "2348137310107";
   const whatsappMessage = encodeURIComponent("Hello REOL Global, I would like to make an enquiry.");
   const url = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
