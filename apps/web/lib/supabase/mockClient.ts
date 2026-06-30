@@ -5,10 +5,86 @@ export const isMockMode = !process.env.NEXT_PUBLIC_SUPABASE_URL ||
   process.env.NEXT_PUBLIC_SUPABASE_URL.includes("dummy-project-id") ||
   process.env.NEXT_PUBLIC_SUPABASE_URL === "";
 
+function createMockQueryBuilder(table: string, cookieStoreOrRequest: any, isMiddleware = false) {
+  const getCookie = (name: string) => {
+    if (isMiddleware) {
+      return cookieStoreOrRequest.cookies.get(name)?.value;
+    } else {
+      return cookieStoreOrRequest.get(name)?.value;
+    }
+  };
+
+  const fullName = getCookie("reol-nexus-fullname") || "Akinseinde Ebenezer";
+  const onboarded = getCookie("reol-nexus-onboarded") === "true";
+
+  let isSingle = false;
+  let isInsert = false;
+
+  let mockData: any = [];
+  if (table === "profiles") {
+    mockData = {
+      id: "mock-user-123",
+      full_name: fullName,
+      org_id: onboarded ? "mock-org-123" : null,
+      organizations: {
+        name: "REOL GLOBAL SOLUTIONS LIMITED"
+      }
+    };
+  } else if (table === "business_units") {
+    mockData = [
+      { id: "bu1", name: "Event Center", org_id: "mock-org-123" },
+      { id: "bu2", name: "Eatery", org_id: "mock-org-123" },
+      { id: "bu3", name: "Laundry", org_id: "mock-org-123" },
+    ];
+  } else {
+    mockData = [];
+  }
+
+  const builder: any = {
+    select(fields?: string) {
+      return builder;
+    },
+    eq(field: string, value: any) {
+      return builder;
+    },
+    order(field: string, options?: any) {
+      return builder;
+    },
+    limit(val: number) {
+      return builder;
+    },
+    single() {
+      isSingle = true;
+      return builder;
+    },
+    insert(data: any) {
+      isInsert = true;
+      return builder;
+    },
+    then(resolve: any) {
+      let resolvedData = mockData;
+      if (isInsert) {
+        resolvedData = { id: "mock-inserted-id" };
+      }
+      
+      const result = {
+        data: isSingle ? (Array.isArray(resolvedData) ? resolvedData[0] || null : resolvedData) : resolvedData,
+        error: null
+      };
+      
+      if (resolve) {
+        resolve(result);
+      }
+      return Promise.resolve(result);
+    }
+  };
+
+  return builder;
+}
+
 export async function createMockClient() {
   const cookieStore = await cookies();
   const session = cookieStore.get("reol-nexus-session")?.value;
-  const onboarded = cookieStore.get("reol-nexus-onboarded")?.value === "true";
 
   return {
     auth: {
@@ -46,63 +122,7 @@ export async function createMockClient() {
       }
     },
     from(table: string) {
-      return {
-        select(fields: string) {
-          return {
-            eq(field: string, value: any) {
-              return {
-                single() {
-                  const fullName = cookieStore.get("reol-nexus-fullname")?.value || "Akinseinde Ebenezer";
-                  if (table === "profiles") {
-                    return {
-                      data: {
-                        id: "mock-user-123",
-                        full_name: fullName,
-                        org_id: onboarded ? "mock-org-123" : null,
-                        organizations: {
-                          name: "REOL GLOBAL SOLUTIONS LIMITED"
-                        }
-                      },
-                      error: null
-                    };
-                  }
-                  return { data: null, error: null };
-                },
-                limit(val: number) {
-                  return { data: [], error: null };
-                }
-              };
-            },
-            order(field: string, options?: any) {
-              return {
-                limit(val: number) {
-                  return { data: [], error: null };
-                },
-                then(resolve: any) {
-                  resolve({ data: [], error: null });
-                }
-              };
-            },
-            then(resolve: any) {
-              resolve({ data: [], error: null });
-            }
-          };
-        },
-        insert(data: any) {
-          return {
-            select() {
-              return {
-                single() {
-                  return { data: { id: "mock-inserted-id" }, error: null };
-                }
-              };
-            },
-            then(resolve: any) {
-              resolve({ data: null, error: null });
-            }
-          };
-        }
-      };
+      return createMockQueryBuilder(table, cookieStore, false);
     },
     async rpc(fn: string, args: any) {
       if (fn === "initialize_new_organization") {
@@ -116,7 +136,6 @@ export async function createMockClient() {
 
 export function createMockClientForRequest(request: NextRequest, response: NextResponse) {
   const session = request.cookies.get("reol-nexus-session")?.value;
-  const onboarded = request.cookies.get("reol-nexus-onboarded")?.value === "true";
 
   return {
     auth: {
@@ -137,33 +156,7 @@ export function createMockClientForRequest(request: NextRequest, response: NextR
       }
     },
     from(table: string) {
-      return {
-        select(fields: string) {
-          return {
-            eq(field: string, value: any) {
-              return {
-                single() {
-                  const fullName = request.cookies.get("reol-nexus-fullname")?.value || "Akinseinde Ebenezer";
-                  if (table === "profiles") {
-                    return {
-                      data: {
-                        id: "mock-user-123",
-                        full_name: fullName,
-                        org_id: onboarded ? "mock-org-123" : null,
-                        organizations: {
-                          name: "REOL GLOBAL SOLUTIONS LIMITED"
-                        }
-                      },
-                      error: null
-                    };
-                  }
-                  return { data: null, error: null };
-                }
-              };
-            }
-          };
-        }
-      };
+      return createMockQueryBuilder(table, request, true);
     }
   } as any;
 }
