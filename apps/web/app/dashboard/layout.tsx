@@ -91,6 +91,13 @@ export default async function DashboardLayout({
             <FileText className="w-4 h-4 text-[#0F5132] dark:text-[#38C186]" />
             <span>Reports</span>
           </Link>
+          <Link
+            href="/dashboard/leads"
+            className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-[#17221A] dark:text-[#E2EAE4] hover:bg-[#F4F7F5] dark:hover:bg-[#151B16] transition-colors"
+          >
+            <Inbox className="w-4 h-4 text-[#0F5132] dark:text-[#38C186]" />
+            <span>Leads Pipeline</span>
+          </Link>
         </nav>
 
         {/* User profile & Logout */}
@@ -158,6 +165,13 @@ export default async function DashboardLayout({
         >
           <Wallet className="w-5 h-5 text-[#0F5132] dark:text-[#38C186]" />
           <span>Budgets</span>
+        </Link>
+        <Link
+          href="/dashboard/leads"
+          className="flex flex-col items-center gap-1 text-[10px] font-medium text-[#5C6E62] dark:text-[#90A496] hover:text-[#0F5132] dark:hover:text-[#38C186] transition-colors"
+        >
+          <Inbox className="w-5 h-5 text-[#0F5132] dark:text-[#38C186]" />
+          <span>Leads</span>
         </Link>
         <form action={logout} className="flex flex-col items-center justify-center">
           <button

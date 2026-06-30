@@ -44,7 +44,7 @@ export default async function EventCenterPage() {
     .order("display_order", { ascending: true });
 
   // Format packages list for the form dropdown selector
-  const formPackages = (packages || []).map(p => ({
+  const formPackages = (packages || []).map((p: any) => ({
     id: p.id,
     name: p.name,
     hall_name: p.hall_name || "General Hall"
@@ -152,7 +152,7 @@ export default async function EventCenterPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {packages && packages.map((pkg) => (
+            {packages && packages.map((pkg: any) => (
               <div 
                 key={pkg.id} 
                 className="bg-white dark:bg-[#111612] rounded-3xl overflow-hidden border border-[#E2EAE4] dark:border-[#1E2720] shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
@@ -223,7 +223,7 @@ export default async function EventCenterPage() {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {gallery.map((img) => (
+              {gallery.map((img: any) => (
                 <div key={img.id} className="group relative aspect-square bg-[#F4F7F5] dark:bg-[#1E2720] rounded-3xl overflow-hidden shadow-sm hover:shadow-lg border border-[#E2EAE4]/55 dark:border-[#1E2720]/55 transition-all duration-300">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img 
@@ -262,7 +262,7 @@ export default async function EventCenterPage() {
             </div>
 
             <div className="space-y-6">
-              {terms && terms.map((term) => (
+              {terms && terms.map((term: any) => (
                 <div key={term.id} className="p-6 rounded-2xl bg-white dark:bg-[#111612] border border-[#E2EAE4] dark:border-[#1E2720] shadow-sm space-y-2">
                   <div className="flex gap-2.5 items-center">
                     <div className="w-1.5 h-6 rounded-full bg-[#D4AF37] shrink-0" />

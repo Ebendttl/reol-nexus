@@ -43,7 +43,7 @@ export default async function EventPackageDetailPage({ params }: { params: any }
     .select("*")
     .eq("is_active", true);
 
-  const formPackages = (allPackages || []).map(p => ({
+  const formPackages = (allPackages || []).map((p: any) => ({
     id: p.id,
     name: p.name,
     hall_name: p.hall_name || "General Hall"

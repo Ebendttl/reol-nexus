@@ -334,7 +334,7 @@ export default async function MarketingHomePage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {testimonials.map((test) => (
+              {testimonials.map((test: any) => (
                 <div key={test.id} className="bg-white dark:bg-[#111612] p-8 rounded-3xl border border-[#E2EAE4] dark:border-[#1E2720] shadow-sm flex flex-col justify-between">
                   <div className="space-y-4">
                     <div className="flex gap-1 text-[#D4AF37]">
@@ -379,7 +379,7 @@ export default async function MarketingHomePage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {comingSoonUnits.map((unit) => {
+              {comingSoonUnits.map((unit: any) => {
                 const IconComponent = iconsMap[unit.icon] || Building;
                 return (
                   <div key={unit.id} className="relative group p-8 rounded-3xl bg-[#F4F7F5] dark:bg-[#171D18] border border-[#E2EAE4]/80 dark:border-[#1E2720]/80 shadow-sm flex flex-col justify-between hover:shadow-md transition-all">
