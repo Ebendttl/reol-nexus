@@ -1,7 +1,12 @@
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
+import { isMockMode, createMockClient } from "./mockClient";
 
 export async function createClient() {
+  if (isMockMode) {
+    return createMockClient();
+  }
+
   const cookieStore = await cookies();
 
   return createServerClient(
